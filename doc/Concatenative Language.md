@@ -11,3 +11,5 @@ A **concatenative programming** language is a
     - juxtaposition of expressions denotes function composition
 - for practical purposes: some syntax was predefined for
     - literals / atoms (numbers, strings)
+
+The lack of argument naming gives point-free style a reputation of being unnecessarily obscure, hence the epithet "pointless style".
