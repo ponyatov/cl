@@ -4,18 +4,18 @@ VM vm;
 
 void VM::push(int32_t n) {
     assert(Dp < Dsz);
-    D[Dp++] = CELL{CELL::INT,n};
+    D[Dp++] = CELL{T::INT, {n : n}};
 }
 
 void VM::push(uint32_t u) {
     assert(Dp < Dsz);
-    D[Dp++] = CELL{CELL::UINT,u};
+    D[Dp++] = CELL{T::UINT, {u : u}};
 }
 
 void VM::fpush(float f) {
     // assert(Fp < Fsz); F[Fp++] = f;
     assert(Dp < Dsz);
-    D[Dp++] = CELL{CELL::FLOAT,f};
+    D[Dp++] = CELL{T::FLOAT, {f : f}};
 }
 
 void VM::dump() {

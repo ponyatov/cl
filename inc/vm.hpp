@@ -9,17 +9,9 @@
 
 /// @brief Virtual Machine
 class VM {
-    // /// @name F: FPU
-    // /// @{
-    // static const int Fsz =
-    //     static_cast<size_t>(config::Fsz);  ///< FPU stack size
-    // float F[Fsz];                          ///< FPU stack
-    // size_t Fp = 0;                         ///< @ref F pointer
-    // /// @}
-
     /// @name D: data stack
     /// @{
-    static const int Dsz =
+    static const size_t Dsz =
         static_cast<size_t>(config::Dsz);  ///< data stack size
     CELL D[Dsz];                           ///< data stack holds @ref CELL s
     size_t Dp = 0;                         ///< @ref D pointer
@@ -27,10 +19,10 @@ class VM {
     /// @}
     /// @name R: return stack
     /// @{
-    static const int Rsz =
+    static const size_t Rsz =
         static_cast<size_t>(config::Rsz);  ///< return stack size
-    uint32_t R[Rsz];                       ///< return stack
-    uint16_t Rp = 0;                       ///< @ref R pointer
+    size_t R[Rsz];                         ///< return stack
+    size_t Rp = 0;                         ///< @ref R pointer
 
     /// @}
 

@@ -1,10 +1,41 @@
 #pragma none
 
-#include <stdint.h>
+#include <cl.hpp>
 
+/// @defgroup type type
+/// @brief @ref CELL data types
+/// @ingroup vm
+/// @{
+
+/// @brief type/class tag
+enum class T : uint8_t {
+    NIL,    ///< `nil`
+    INT,    ///< `i32` signed 32-bit integer
+    UINT,   ///< `u32` unsigned 32-bit integer
+    FLOAT,  ///< `f32` 32-bit float
+    BOOL,   ///< `bool` boolean
+    PTR,    ///< `ptr` raw pointer
+};
+
+static_assert(sizeof(T) == sizeof(uint8_t), "T::size");
+
+/// @brief scalar types & pointers (can fit in machine `size_t`)
+union V {
+    void *p;     ///< @ref nullptr
+    int32_t n;   ///< @ref T::INT
+    uint32_t u;  ///< @ref T::UINT
+    float f;     ///< @ref T::FLOAT
+    bool b;      ///< @ref T::BOOL
+};
+
+static_assert(sizeof(V) == sizeof(size_t), "V::size");
+
+/// @brief universal data item can be stored in @ref VM.D data stack
 struct CELL {
-    enum T { INT,UINT,FLOAT} t;
-    union V { int32_t n; uint32_t u; float f;} v;
+    T t;  ///< @ref T type/class tag
+    V v;  ///< @ref V type-specific low-level value
+
+    void dump();
 };
 
 // /// @brief available cell (value) types
@@ -23,3 +54,5 @@ struct CELL {
 //     T t;
 //     V v;
 // };
+
+/// @}
