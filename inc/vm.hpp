@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cmd.hpp"
+#include "cl.hpp"
 
 /// @defgroup vm vm
 /// @brief Virtual Machine
@@ -9,14 +9,49 @@
 
 /// @brief Virtual Machine
 class VM {
-    static const int Dsz = 0x10;  ///< data stack size
-    int D[Dsz];                   ///< data stack
-    int Dp = 0;                   ///< @ref D pointer
+    /// @name F: FPU
+    /// @{
+    static const int Fsz =
+        static_cast<size_t>(config::Fsz);  ///< FPU stack size
+    float F[Fsz];                          ///< FPU stack
+    size_t Fp = 0;                         ///< @ref F pointer
+
+    /// @}
+    /// @name D: data stack
+    /// @{
+    static const int Dsz =
+        static_cast<size_t>(config::Dsz);  ///< data stack size
+    int32_t D[Dsz];                        ///< data stack
+    size_t Dp = 0;                         ///< @ref D pointer
+
+    /// @}
+    /// @name R: return stack
+    /// @{
+    static const int Rsz =
+        static_cast<size_t>(config::Rsz);  ///< return stack size
+    uint32_t R[Rsz];                       ///< return stack
+    uint16_t Rp = 0;                       ///< @ref R pointer
+
+    /// @}
+
    public:
-    void push(int n);  ///< `( -- n )` push integer
-    void dump();       ///< `( -- )` dump @ref VM state
-    void nop();        ///< `( -- )` do nothing
-    void halt();       ///< `( -- )` stop @ref VM
+    /// @name D: data stack
+    /// @{
+    void push(int n);  ///< `D:( -- n )` push integer
+    /// @}
+    /// @name control
+    /// @{
+    void nop();   ///< `( -- )` do nothing
+    void halt();  ///< `( -- )` stop @ref VM
+    /// @}
+    /// @name debug
+    /// @{
+    void dump();  ///< `( -- )` dump @ref VM state
+    /// @}
+    /// @name F: FPU
+    /// @{
+    void fpush(float f);  ///< `F:( -- f )` push floating point
+    /// @}
 };
 
 /// single @ref VM

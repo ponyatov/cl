@@ -1,5 +1,7 @@
 #pragma once
 
+#include "config.hpp"
+
 /// @defgroup core core
 /// @defgroup cross cross
 
