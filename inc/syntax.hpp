@@ -7,13 +7,18 @@
 
 /// @name lexer
 /// @{
-extern int yylex();
+extern int yylex();   ///< lexer
+extern int yylineno;  ///< current line
+extern char *yytext;  ///< current lexeme
+extern char *yyfile;  ///< current script file name
+extern FILE *yyin;    ///< file handler
 /// @}
 
 /// @name parser
 /// @{
-extern int yyparse();
-extern void yyerror(const char *msg);
+extern int yyparse();                  ///< parser
+extern void yyerror(const char *msg);  ///< syntax error callback
+#include "cl.parser.hpp"
 /// @}
 
 /// @}
