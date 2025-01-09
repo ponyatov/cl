@@ -14,5 +14,6 @@
 #include "os.hpp"
 
 #include "syntax.hpp"
+#include "type.hpp"
 #include "vm.hpp"
 #include "compiler.hpp"

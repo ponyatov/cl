@@ -1,5 +1,6 @@
 %{
     #include "cl.hpp"
+    #include <string>
     char *yyfile = nullptr;
 %}
 
@@ -13,8 +14,10 @@ n {s}?{d}
 #[^\n]*     {}              // line comment
 [ \t\r\n]+  {}              // drop spaces
 
-{n}(\.{d}+)?[eE]{n}  { BEGIN(INITIAL); yylval.f = atof(yytext); return FLO; }
-{n}(\.{d}+)          { BEGIN(INITIAL); yylval.f = atof(yytext); return FLO; }
-{n}                  { BEGIN(INITIAL); yylval.n = atoi(yytext); return INT; }
+"0x"[0-9a-fA-F]+     { yylval.u = std::stol(&yytext[2],nullptr,0x10); return UINT; }
+
+{n}(\.{d}+)?[eE]{n}  { yylval.f = atof(yytext); return FLO; }
+{n}(\.{d}+)          { yylval.f = atof(yytext); return FLO; }
+{n}                  { yylval.n = atoi(yytext); return INT; }
 
 .           {yyerror("");}  // any undetected char
