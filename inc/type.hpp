@@ -10,8 +10,7 @@
 /// @brief type/class tag
 enum class T : uint8_t {
     NIL,    ///< `nil`
-    INT,    ///< `i32` signed 32-bit integer
-    UINT,   ///< `u32` unsigned 32-bit integer
+    INT,    ///< `int` signed integer
     FLOAT,  ///< `f32` 32-bit float
     BOOL,   ///< `bool` boolean
     PTR,    ///< `ptr` raw pointer
@@ -21,11 +20,10 @@ static_assert(sizeof(T) == sizeof(uint8_t), "T::size");
 
 /// @brief scalar types & pointers (can fit in machine `size_t`)
 union V {
-    void *p;     ///< @ref nullptr
-    int32_t n;   ///< @ref T::INT
-    uint32_t u;  ///< @ref T::UINT
-    float f;     ///< @ref T::FLOAT
-    bool b;      ///< @ref T::BOOL
+    void *p;  ///< @ref nullptr
+    int n;    ///< @ref T::INT
+    float f;  ///< @ref T::FLOAT
+    bool b;   ///< @ref T::BOOL
 };
 
 static_assert(sizeof(V) == sizeof(size_t), "V::size");
