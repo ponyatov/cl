@@ -1,3 +1,13 @@
 C += $(wildcard src/*.c*)
 H += $(wildcard inc/*.h*)
-F += $(wildcard lib/ini) $(wildcard lib/*.f)
+
+S += $(wildcard lib/*.ini) $(wildcard lib/*.f)
+
+C += $(wildcard hw/$(HW)/src/*.c*)
+H += $(wildcard hw/$(HW)/inc/*.h*)
+C += $(wildcard cpu/$(CPU)/src/*.c*)
+H += $(wildcard cpu/$(CPU)/inc/*.h*)
+C += $(wildcard arch/$(ARCH)/src/*.c*)
+H += $(wildcard arch/$(ARCH)/inc/*.h*)
+C += $(wildcard os/$(OS)/src/*.c*)
+H += $(wildcard os/$(OS)/inc/*.h*)

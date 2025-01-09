@@ -1,0 +1,21 @@
+#include "cl.hpp"
+
+int main(int argc, char *argv[]) {  //
+    {
+        hw_init();
+        os_init();
+    }
+    arg(0, argv[0]);
+    for (int i = 1; i < argc; i++) {  //
+        arg(i, argv[i]);
+    }
+    {
+        os_fini();
+        hw_fini();
+    }
+    return 0;
+}
+
+void arg(int argc, char *argv) {  //
+    fprintf(stderr, "arg[%i] = <%s>\n", argc, argv);
+}

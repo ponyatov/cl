@@ -6,3 +6,4 @@
 github: https://github.com/ponyatov/cl
 
 - @ref cl
+- https://en.wikipedia.org/wiki/Concatenative_programming_language
