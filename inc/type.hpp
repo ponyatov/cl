@@ -35,7 +35,7 @@ struct CELL {
     T t;  ///< @ref T type/class tag
     V v;  ///< @ref V type-specific low-level value
 
-    void dump();
+    void dump();  ///< @ref T : @ref V print
 };
 
 // /// @brief available cell (value) types

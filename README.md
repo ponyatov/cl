@@ -1,4 +1,4 @@
-# `cl`
+# ![](doc/logo.png) `cl`
 ## embedded Concatenative Language
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> 2025 MIT
