@@ -42,4 +42,26 @@
     "files.trimFinalNewlines": true,
     "git.enabled": false,
     "terminal.integrated.copyOnSelection": true,
+
+    // clang-format
+    "clang-format.executable":     "clang-format",
+    "clang-format.fallbackStyle":  "Google",
+    "clang-format.style":          "file",
+
+    // C++
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave":     false
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave":     false
+    },
+    // "C_Cpp.intelliSenseEngine": "Tag Parser",
+    // "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+
+    // cmake
+    "cmake.sourceDirectory"  : "${workspaceFolder}",
+    "cmake.buildDirectory"   : "${workspaceFolder}/tmp/${workspaceFolderBasename}",
+    "cmake.generator"        : "Unix Makefiles",
 }
